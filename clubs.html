@@ -1,111 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>USIU Student Clubs</title>
-    <style>
-        body {
-            font-family: Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fdfdfd;
-        }
-        header {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        nav {
-            background-color: #eee;
-            text-align: center;
-            padding: 10px;
-        }
-        nav a {
-            margin: 0 15px;
-            color: #003366;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ff6600;
-        }
-        main {
-            padding: 20px;
-        }
-        dl dt {
-            font-weight: bold;
-            color: #003366;
-        }
-        dl dd {
-            margin-bottom: 15px;
-        }
-        ol {
-            background: #f4f4f4;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        div {
-            border: 2px solid #003366;
-            background-color: #e6f0ff;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #003366;
-            text-align: center;
-            color: white;
-            padding: 10px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>USIU Student Clubs</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    
+    header {
+      background: linear-gradient(135deg, #003366, #00509e);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 34px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    
+    nav {
+      background: #fff;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin: 0 18px;
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      transition: color 0.3s, border-bottom 0.3s;
+      padding-bottom: 5px;
+    }
+
+    nav a:hover {
+      color: #ff6600;
+      border-bottom: 2px solid #ff6600;
+    }
+
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    main h2 {
+      color: #003366;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    
+    .clubs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .club-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .club-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .club-card h3 {
+      color: #003366;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .club-card p {
+      color: #555;
+      font-size: 15px;
+    }
+
+    h3 {
+      color: #003366;
+      margin: 30px 0 15px;
+    }
+
+    ol {
+      background: #eef3f8;
+      padding: 20px;
+      border-radius: 8px;
+      list-style-position: inside;
+    }
+
+    ol li {
+      margin-bottom: 10px;
+    }
+
+    
+    .featured {
+      margin-top: 40px;
+      padding: 25px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #e6f0ff, #f9fbff);
+      border-left: 6px solid #003366;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .featured h3 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+
+    .featured p {
+      color: #444;
+    }
+
+    
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    
-    <header>
-        <h1 style="letter-spacing: 1px;">USIU Student Hub</h1>
-        <p style="font-size: 18px;">Connecting Students, Building Futures</p>
-    </header>
 
-    
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="clubs.html">Clubs</a>
-        <a href="https://www.usiu.ac.ke" target="_blank">Official USIU Website</a>
-    </nav>
+  
+  <header>
+    <h1>USIU Student Hub</h1>
+    <p>Connecting Students, Building Futures</p>
+  </header>
 
-    
-    <main>
-        <h2 style="color:#003366;">Student Clubs at USIU</h2>
-        <dl>
-            <dt>AI & Robotics Club</dt>
-            <dd>Exploring artificial intelligence, robotics, and coding competitions.</dd>
+  
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="clubs.html">Clubs</a>
+    <a href="https://www.usiu.ac.ke" target="_blank">Official USIU Website</a>
+  </nav>
 
-            <dt>Drama Society</dt>
-            <dd>For students passionate about theatre, acting, and storytelling.</dd>
+  
+  <main>
+    <h2>Student Clubs at USIU</h2>
 
-            <dt>Green Earth Movement</dt>
-            <dd>Focused on sustainability and environmental projects on campus.</dd>
-        </dl>
+    <div class="clubs">
+      <div class="club-card">
+        <h3>AI & Robotics Club</h3>
+        <p>Exploring artificial intelligence, robotics, and coding competitions.</p>
+      </div>
 
-        <h3>How to Join a Club</h3>
-        <ol>
-            <li>Visit the Student Affairs Office.</li>
-            <li>Fill out the Club Registration Form.</li>
-            <li>Attend the club’s orientation meeting.</li>
-        </ol>
+      <div class="club-card">
+        <h3>Drama Society</h3>
+        <p>For students passionate about theatre, acting, and storytelling.</p>
+      </div>
 
-        
-        <div>
-            <h3> Featured Club: AI & Robotics Club</h3>
-            <p>Won the 2024 Nairobi Tech Challenge. Inspiring innovation through AI and robotics research.</p>
-        </div>
-    </main>
+      <div class="club-card">
+        <h3>Green Earth Movement</h3>
+        <p>Focused on sustainability and environmental projects on campus.</p>
+      </div>
+    </div>
 
-    
-    <footer>
-        <p><a href="index.html" style="color:white;">Back to Homepage</a></p>
-    </footer>
+    <h3>How to Join a Club</h3>
+    <ol>
+      <li>Visit the Student Affairs Office.</li>
+      <li>Fill out the Club Registration Form.</li>
+      <li>Attend the club’s orientation meeting.</li>
+    </ol>
+
+    <div class="featured">
+      <h3> Featured Club: AI & Robotics Club</h3>
+      <p>Won the 2024 Nairobi Tech Challenge. Inspiring innovation through AI and robotics research.</p>
+    </div>
+  </main>
+
+  
+  <footer>
+    <p><a href="index.html">Back to Homepage</a></p>
+  </footer>
+
 </body>
 </html>
