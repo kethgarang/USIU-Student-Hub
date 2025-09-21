@@ -1,85 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>USIU Student Hub</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-        }
-        header {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        nav {
-            background-color: #eee;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #003366;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ff6600;
-        }
-        main {
-            padding: 20px;
-        }
-        blockquote {
-            border-left: 5px solid #003366;
-            padding-left: 10px;
-            margin: 20px 0;
-            font-style: italic;
-            color: #555;
-        }
-        footer {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>USIU Student Hub</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    
+    header {
+      background: linear-gradient(135deg, #003366, #00509e);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    
+    nav {
+      background: #fff;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      transition: color 0.3s, border-bottom 0.3s;
+      padding-bottom: 5px;
+    }
+
+    nav a:hover {
+      color: #ff6600;
+      border-bottom: 2px solid #ff6600;
+    }
+
+    
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    main h2 {
+      color: #003366;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    
+    .events {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .event-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .event-card h3 {
+      color: #003366;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .event-card p {
+      color: #555;
+      font-size: 15px;
+    }
+
+    
+    blockquote {
+      margin: 40px auto;
+      padding: 20px 30px;
+      max-width: 700px;
+      border-left: 5px solid #003366;
+      background: #eef3f8;
+      font-style: italic;
+      color: #444;
+      border-radius: 8px;
+    }
+
+    
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    
-    <header>
-        <h1 style="letter-spacing: 2px;">USIU Student Hub</h1>
-        <p style="font-size: 18px;">Connecting Students, Building Futures</p>
-    </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="clubs.html">Clubs</a>
-        <a href="https://www.usiu.ac.ke" target="_blank">Official USIU Website</a>
-    </nav>
+  
+  <header>
+    <h1>USIU Student Hub</h1>
+    <p>Connecting Students, Building Futures</p>
+  </header>
 
-    <main>
-        <h2 style="color:#003366;">Upcoming Events</h2>
-        <ul>
-            <li>Tech & Innovation Fair – October 15, 2025</li>
-            <li>Cultural Day – November 3, 2025</li>
-            <li>Sports Gala – December 1, 2025</li>
-        </ul>
+  
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="clubs.html">Clubs</a>
+    <a href="https://www.usiu.ac.ke" target="_blank">Official USIU Website</a>
+  </nav>
 
-        <blockquote>
-            “USIU is where ideas meet action.” – Student Leader
-        </blockquote>
-    </main>
+  
+  <main>
+    <h2>Upcoming Events</h2>
+    <div class="events">
+      <div class="event-card">
+        <h3>Tech & Innovation Fair</h3>
+        <p><strong>Date:</strong> October 15, 2025</p>
+        <p>Explore the latest in tech, innovation, and startups from fellow students and industry experts.</p>
+      </div>
 
-    
-    <footer>
-        <p>Contact us: <a href="mailto:info@usiu.ac.ke" style="color:white;">info@usiu.ac.ke</a></p>
-        <p>&copy; 2025 USIU Student Hub</p>
-    </footer>
+      <div class="event-card">
+        <h3>Cultural Day</h3>
+        <p><strong>Date:</strong> November 3, 2025</p>
+        <p>A vibrant showcase of diverse cultures, traditions, music, and cuisines at USIU.</p>
+      </div>
+
+      <div class="event-card">
+        <h3>Sports Gala</h3>
+        <p><strong>Date:</strong> December 1, 2025</p>
+        <p>Join us for an exciting day of inter-club sports competitions and entertainment.</p>
+      </div>
+    </div>
+
+    <blockquote>
+      “USIU is where ideas meet action.” – Student Leader
+    </blockquote>
+  </main>
+
+  
+  <footer>
+    <p>Contact us: <a href="mailto:info@usiu.ac.ke">info@usiu.ac.ke</a></p>
+    <p>&copy; 2025 USIU Student Hub</p>
+  </footer>
+
 </body>
 </html>
