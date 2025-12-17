@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Registration Form</title>
+<style>
+
+    /* Basic page styling */
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      background-color: #f4f4f4;
+
+      margin: 0;
+
+      padding: 0;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: flex-start;
+
+      min-height: 100vh;
+
+    }
+ 
+    .container {
+
+      background: #ffffff;
+
+      margin-top: 40px;
+
+      padding: 20px 25px;
+
+      border-radius: 8px;
+
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+      width: 100%;
+
+      max-width: 400px;
+
+    }
+ 
+    h1 {
+
+      font-size: 1.4rem;
+
+      margin-bottom: 15px;
+
+      text-align: center;
+
+    }
+ 
+    .form-group {
+
+      margin-bottom: 12px;
+
+    }
+ 
+    label {
+
+      display: block;
+
+      font-weight: bold;
+
+      margin-bottom: 4px;
+
+    }
+ 
+    input, select, textarea {
+
+      width: 100%;
+
+      padding: 8px;
+
+      box-sizing: border-box;
+
+      border-radius: 4px;
+
+      border: 1px solid #ccc;
+
+      font-size: 0.95rem;
+
+    }
+ 
+    input:focus, select:focus, textarea:focus {
+
+      outline: none;
+
+      border-color: #007bff;
+
+    }
+ 
+    button {
+
+      margin-top: 8px;
+
+      width: 100%;
+
+      padding: 10px;
+
+      border: none;
+
+      border-radius: 4px;
+
+      font-size: 1rem;
+
+      cursor: pointer;
+
+      background-color: #007bff;
+
+      color: white;
+
+    }
+ 
+    button:hover {
+
+      opacity: 0.9;
+
+    }
+ 
+    .error {
+
+      color: #b00020;
+
+      font-size: 0.85rem;
+
+      margin-top: 4px;
+
+    }
+ 
+    .result {
+
+      margin-top: 16px;
+
+      padding: 10px;
+
+      border-radius: 4px;
+
+      font-size: 0.95rem;
+
+      display: none; /* hidden until we have a result */
+
+    }
+ 
+    .result.success {
+
+      background-color: #e6ffed;
+
+      border: 1px solid #27ae60;
+
+      color: #1c7c45;
+
+    }
+ 
+    .result.fail {
+
+      background-color: #ffecec;
+
+      border: 1px solid #e74c3c;
+
+      color: #b03a2e;
+
+    }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Workshop Registration</h1>
+ 
+    <!-- HTML5 FORM -->
+<form id="registrationForm" novalidate>
+<!-- Name -->
+<div class="form-group">
+<label for="name">Full Name *</label>
+<input type="text" id="name" name="name" required minlength="3" placeholder="Enter your full name">
+<div class="error" id="nameError"></div>
+</div>
+ 
+      <!-- Email -->
+<div class="form-group">
+<label for="email">Email Address *</label>
+<input type="email" id="email" name="email" required placeholder="example@domain.com">
+<div class="error" id="emailError"></div>
+</div>
+ 
+      <!-- Age -->
+<div class="form-group">
+<label for="age">Age *</label>
+<input type="number" id="age" name="age" required min="16" max="100" placeholder="e.g., 22">
+<div class="error" id="ageError"></div>
+</div>
+ 
+      <!-- Track -->
+<div class="form-group">
+<label for="track">Preferred Track *</label>
+<select id="track" name="track" required>
+<option value="">-- Select a track --</option>
+<option value="web">Web Development</option>
+<option value="data">Data Science</option>
+<option value="ai">Artificial Intelligence</option>
+</select>
+<div class="error" id="trackError"></div>
+</div>
+ 
+      <!-- Comments -->
+<div class="form-group">
+<label for="comments">Comments (optional)</label>
+<textarea id="comments" name="comments" rows="3" placeholder="Anything we should know?"></textarea>
+</div>
+ 
+      <!-- Submit Button -->
+<button type="submit">Register</button>
+</form>
+ 
+    <!-- Result area (JavaScript will fill this) -->
+<div id="result" class="result"></div>
+</div>
+ 
+  <script>
+
+    // Get references to the form and elements
+
+    const form = document.getElementById('registrationForm');
+
+    const resultBox = document.getElementById('result');
+ 
+    // Error message elements
+
+    const nameError = document.getElementById('nameError');
+
+    const emailError = document.getElementById('emailError');
+
+    const ageError = document.getElementById('ageError');
+
+    const trackError = document.getElementById('trackError');
+ 
+    form.addEventListener('submit', function (event) {
+
+      // Prevent actual form submission (no page reload)
+
+      event.preventDefault();
+ 
+      // Clear previous messages
+
+      clearErrors();
+
+      resultBox.style.display = 'none';
+
+      resultBox.textContent = '';
+
+      resultBox.className = 'result';
+ 
+      // Collect values
+
+      const name = form.name.value.trim();
+
+      const email = form.email.value.trim();
+
+      const age = form.age.value.trim();
+
+      const track = form.track.value;
+
+      const comments = form.comments.value.trim();
+ 
+      // Simple validation logic (extra to HTML5 attributes)
+
+      let isValid = true;
+ 
+      if (name.length < 3) {
+
+        nameError.textContent = 'Name must be at least 3 characters long.';
+
+        isValid = false;
+
+      }
+ 
+      if (!validateEmail(email)) {
+
+        emailError.textContent = 'Please enter a valid email address.';
+
+        isValid = false;
+
+      }
+ 
+      if (!age || Number(age) < 16 || Number(age) > 100) {
+
+        ageError.textContent = 'Age must be between 16 and 100.';
+
+        isValid = false;
+
+      }
+ 
+      if (!track) {
+
+        trackError.textContent = 'Please select a preferred track.';
+
+        isValid = false;
+
+      }
+ 
+      if (!isValid) {
+
+        // Show a general failure message
+
+        resultBox.textContent = 'Please correct the highlighted errors and try again.';
+
+        resultBox.classList.add('fail');
+
+        resultBox.style.display = 'block';
+
+        return;
+
+      }
+ 
+      // If everything is valid, "process" the form
+
+      const summary = `
+
+        Thank you, ${name}! You have registered successfully.
+
+        \n\nDetails:
+
+        - Email: ${email}
+
+        - Age: ${age}
+
+        - Track: ${trackLabel(track)}
+
+        - Comments: ${comments || 'None'}
+
+      `;
+ 
+      resultBox.textContent = summary;
+
+      resultBox.classList.add('success');
+
+      resultBox.style.display = 'block';
+ 
+      // Optional: reset the form after successful "submission"
+
+      form.reset();
+
+    });
+ 
+    // Helper: clear all error messages
+
+    function clearErrors() {
+
+      nameError.textContent = '';
+
+      emailError.textContent = '';
+
+      ageError.textContent = '';
+
+      trackError.textContent = '';
+
+    }
+ 
+    // Helper: simple email regex check
+
+    function validateEmail(email) {
+
+      // Very basic pattern, good enough for teaching purposes
+
+      const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      return pattern.test(email);
+
+    }
+ 
+    // Helper: convert track value to human-friendly label
+
+    function trackLabel(value) {
+
+      switch (value) {
+
+        case 'web': return 'Web Development';
+
+        case 'data': return 'Data Science';
+
+        case 'ai':   return 'Artificial Intelligence';
+
+        default:     return value;
+
+      }
+
+    }
+</script>
+</body>
+</html>
+
+ 
